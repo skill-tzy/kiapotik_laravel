@@ -1,0 +1,142 @@
+const phrases = [
+  { text: "Terlengkap", icon: "asset/product.svg" },
+  { text: "Termurah", icon: "asset/cheap.svg" },
+  { text: "Terjangkau", icon: "asset/location.svg" }
+];
+
+const textEl = document.getElementById("changing-text");
+const iconEl = document.getElementById("sub-icon");
+
+let index = 0;
+
+setInterval(() => {
+  index = (index + 1) % phrases.length;
+
+  textEl.classList.remove("slide");
+  void textEl.offsetWidth; 
+  textEl.classList.add("slide");
+
+  iconEl.classList.remove("slide-img");
+  void iconEl.offsetWidth;
+  iconEl.classList.add("slide-img");
+
+  textEl.textContent = phrases[index].text;
+  iconEl.src = phrases[index].icon;
+  iconEl.alt = phrases[index].text + " Icon";
+}, 2500);
+
+const wrapper = document.getElementById('scrollingWrapper');
+if (wrapper && wrapper.firstElementChild) {
+  const clone = wrapper.firstElementChild.cloneNode(true);
+  wrapper.appendChild(clone);
+}
+
+let cart = [];
+
+function addToCart(id, nama, harga) {
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.qty += 1; 
+  } else {
+    cart.push({ id, nama, harga, qty: 1 });
+  }
+  renderCart();
+}
+
+function renderCart() {
+  const tbody = document.querySelector("#cartTable tbody");
+  const totalEl = document.getElementById("totalHarga");
+  tbody.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const subtotal = item.qty * item.harga;
+    total += subtotal;
+
+    const row = `<tr>
+      <td>${item.nama}</td>
+      <td>${item.qty}</td>
+      <td>Rp ${item.harga.toLocaleString()}</td>
+      <td>Rp ${subtotal.toLocaleString()}</td>
+      <td><button onclick="hapusItem(${index})">X</button></td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+
+  totalEl.textContent = total.toLocaleString();
+}
+
+function hapusItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function kosongkanKeranjang() {
+  cart = [];
+  renderCart();
+}
+
+function printReceipt(e) {
+  e.preventDefault();
+  const nama = e.target.nama.value;
+  const alamat = e.target.alamat.value;
+
+  let strukWindow = window.open('', '', 'width=800,height=600');
+
+  let total = 0;
+  let rows = '';
+  cart.forEach(item => {
+    const subtotal = item.qty * item.harga;
+    total += subtotal;
+    rows += `
+      <tr>
+        <td>${item.nama}</td>
+        <td>${item.qty}</td>
+        <td>Rp ${item.harga.toLocaleString()}</td>
+        <td>Rp ${subtotal.toLocaleString()}</td>
+      </tr>`;
+  });
+
+  strukWindow.document.write(`
+    <html>
+      <head>
+        <title>Struk Pembelian</title>
+        <style>
+          body { font-family: Arial, sans-serif; padding: 20px; }
+          h2 { text-align: center; }
+          table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+          th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+          th { background-color: #f2f2f2; }
+          p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>
+        <h2>STRUK PEMBELIAN - KiApotik</h2>
+        <p><strong>Nama:</strong> ${nama}</p>
+        <p><strong>Alamat:</strong> ${alamat}</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Produk</th>
+              <th>Qty</th>
+              <th>Harga</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+        <h3 style="margin-top:20px;">TOTAL: Rp ${total.toLocaleString()}</h3>
+        <p style="margin-top:30px; text-align:center;">Terima kasih telah berbelanja di KiApotik!</p>
+        <script>
+          window.onload = function() {
+            window.print();
+          }
+        </script>
+      </body>
+    </html>
+  `);
+
+  strukWindow.document.close();
+}
