@@ -12,17 +12,17 @@
     <img src="{{ asset('asset/background.webp') }}" alt="Header Background" class="header-bg" />
     <div class="navbar">
       <div class="logo">
-        <a href="index.blade.php">
+        <a href="{{ url('/') }}">
           <img src="{{ asset('asset/kiapotik.png') }}" alt="Logo Kiapotik" />
         </a>
       </div>
       <ul class="menu">
         <li><a href="{{ url('/tentang') }}">Tentang</a></li>
-        <li><a href="katalog.blade.php">Katalog Produk</a></li>
-        <li><a href="kontak.blade.php">Kontak</a></li>
+        <li><a href="{{ url('/katalog') }}">Katalog Produk</a></li>
+        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
       </ul>
       <div class="nav-right">
-        <a href="katalog.blade.php" class="download-btn">Pesan Obat</a>
+        <a href="{{ url('/katalog') }}" class="download-btn">Pesan Obat</a>
       </div>
     </div>
     <div class="header-content">
@@ -32,7 +32,7 @@
       <span id="changing-text">Terpercaya</span>
       <img src="{{ asset('asset/mingcute.svg') }}" alt="Ikon" id="sub-icon" class="sub-icon" />
       </p>
-      <a href="tentang.blade.php">
+      <a href="{{ url('/tentang') }}">
         <button class="content-btn">Tentang Kiapotik →</button>
       </a>
     </div>
