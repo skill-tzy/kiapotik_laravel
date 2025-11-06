@@ -783,3 +783,29 @@ input[type="text"]:focus {
   margin-right: 6px;
   vertical-align: middle;
 }
+
+.sidebar {
+  width: 240px;
+  background-color: #1f2937;
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  color: #cbd5e1;
+  margin-bottom: 10px;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background-color: #374151;
+  border-radius: 8px;
+  color: white;
+}
+
+.content {
+  background-color: #f9fafb;
+}
+
+.table img {
+  border-radius: 8px;
+}

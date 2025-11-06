@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\InventoriController;
 
 Route::get('/', function () {
     return view('index');
@@ -18,6 +20,12 @@ Route::get('/kontak', function () {
     return view('kontak');
 });
 
-use App\Http\Controllers\KatalogController;
+Route::get('/inventori', function () {
+    return view('inventori');
+});
 
 Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog');
+Route::get('/inventori', [InventoriController::class, 'index'])->name('inventori.index');
+Route::post('/inventori', [InventoriController::class, 'store'])->name('inventori.store');
+Route::put('/inventori/{id}', [InventoriController::class, 'update'])->name('inventori.update');
+Route::delete('/inventori/{id}', [InventoriController::class, 'destroy'])->name('inventori.destroy');

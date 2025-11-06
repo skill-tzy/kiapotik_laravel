@@ -21,7 +21,7 @@
         <li><a href="{{ url('/kontak') }}">Kontak</a></li>
       </ul>
       <div class="nav-right">
-        <a href="{{ url('/') }}" class="download-btn">Pesan Obat</a>
+        <a href="{{ url('/inventori') }}" class="download-btn">Pesan Obat</a>
       </div>
     </div>
   </header>
@@ -45,10 +45,10 @@
 
   <section class="pesan-obat">
     <div class="pesan-wrapper">
-      <a href="{{ url('/kontak') }}" class="pesan-btn">Pesan Sekarang</a>
+      <a href="{{ url('/inventori') }}" class="pesan-btn">Pesan Sekarang</a>
     </div>
   </section>
-  
+
   <section class="footer">
     <div class="footer-container">
       <div class="footer-top">
