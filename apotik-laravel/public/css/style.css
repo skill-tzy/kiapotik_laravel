@@ -526,6 +526,33 @@ header::after {
   font-family: 'Montserrat-Bold';
 }
 
+.pesan-obat {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.pesan-wrapper {
+  text-align: center;
+}
+
+.pesan-btn {
+  background: white;
+  color: #1e1e1e;
+  border: 2px solid #ffda00;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: 'Montserrat-Bold';
+}
+
+.pesan-btn:hover {
+  background: #ffda00;
+  color: #1e1e1e;
+}
+
 form {
   display: flex;
   flex-direction: column;

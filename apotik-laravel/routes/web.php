@@ -17,3 +17,7 @@ Route::get('/katalog', function () {
 Route::get('/kontak', function () {
     return view('kontak');
 });
+
+use App\Http\Controllers\KatalogController;
+
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog');
