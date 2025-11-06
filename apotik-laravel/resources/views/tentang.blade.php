@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiapotik</title>
-    <link rel="icon" href="asset/favicon.png" type="image/png">
-  <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="{{ asset('asset/favicon.png') }}" type="image/png">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 </head>
 <body>
   <header>
     <div class="navbar">
       <div class="logo">
-        <a href="index.php">
-          <img src="asset/kiapotik.png" alt="Logo Kiapotik" />
+        <a href="{{ url('/') }}">
+          <img src="{{ asset('asset/kiapotik.png') }}" alt="Logo Kiapotik" />
         </a>
       </div>
       <ul class="menu">
-        <li><a href="tentang.php" class="highlight">Tentang</a></li>
-        <li><a href="katalog.php">Katalog Produk</a></li>
-        <li><a href="kontak.php">Kontak</a></li>
+        <li><a href="{{ url('/tentang') }}" class="highlight">Tentang</a></li>
+        <li><a href="{{ url('/katalog') }}">Katalog Produk</a></li>
+        <li><a href="{{ url('/kontak') }}">Kontak</a></li>
       </ul>
       <div class="nav-right">
-        <a href="katalog.php" class="download-btn">Pesan Obat</a>
+        <a href="{{ url('/katalog') }}" class="download-btn">Pesan Obat</a>
       </div>
     </div>
   </header>
@@ -41,17 +41,17 @@
 
       <div class="statistik-wrapper">
         <div class="statistik-box">
-          <img src="asset/merchant.svg" alt="Mitra Icon" />
+          <img src="{{ asset('asset/merchant.svg') }}" alt="Mitra Icon" />
           <h3>7.000+</h3>
           <p>Mitra KiApotik</p>
         </div>
         <div class="statistik-box">
-          <img src="asset/product.svg" alt="Produk Icon" />
+          <img src="{{ asset('asset/product.svg') }}" alt="Produk Icon" />
           <h3>50.000+</h3>
           <p>Produk Tersedia</p>
         </div>
         <div class="statistik-box">
-          <img src="asset/location.svg" alt="Kota Icon" />
+          <img src="{{ asset('asset/location.svg') }}" alt="Kota Icon" />
           <h3>480+</h3>
           <p>Jangkauan Kota</p>
         </div>
@@ -72,40 +72,40 @@
   <section class="footer">
     <div class="footer-container">
       <div class="footer-top">
-        <img src="asset/kiapotik.png" alt="Ikon Kesehatan" class="footer-icon" />
+        <img src="{{ asset('asset/kiapotik.png') }}" alt="Ikon Kesehatan" class="footer-icon" />
         <h2 class="footer-title">Digitalisasi Layanan Kesehatan & Farmasi.</h2>
       </div>
   
       <div class="footer-columns">
         <div class="footer-col">
           <h3>Ikuti Kami</h3>
-          <div class="social-item"><img src="asset/instagram.png" /> @KiApotik</div>
-          <div class="social-item"><img src="asset/tiktok_icon.png" /> @KiApotik</div>
-          <div class="social-item"><img src="asset/youtube.png" /> @KiApotik</div>
+          <div class="social-item"><img src="{{ asset('asset/instagram.png') }}" /> @KiApotik</div>
+          <div class="social-item"><img src="{{ asset('asset/tiktok_icon.png') }}" /> @KiApotik</div>
+          <div class="social-item"><img src="{{ asset('asset/youtube.png') }}" /> @KiApotik</div>
         </div>
   
         <div class="footer-col">
           <h3>Metode Pembayaran</h3>
           <div class="logo-row">
-            <img src="asset/pembayaran.png" />
+            <img src="{{ asset('asset/pembayaran.png') }}" />
           </div>
   
           <h3>Metode Pengiriman</h3>
           <div class="logo-row">
-            <img src="asset/pengiriman.png" />
+            <img src="{{ asset('asset/pengiriman.png') }}" />
           </div>
         </div>
   
         <div class="footer-col">
           <h3>Customer Care</h3>
-          <div class="social-item"><img src="asset/whatsapp.png" /> 089669320161</div>
-          <div class="social-item"><img src="asset/customer-service.png" /> 0271-700</div>
-          <div class="social-item"><img src="asset/email.png" /> support@KiApotik.com</div>
-          <div class="social-item"><img src="asset/calendar.png" /> Senin s/d Minggu</div>
-          <div class="social-item"><img src="asset/clock.png" /> 08:00 - 21:00 WIB</div>
+          <div class="social-item"><img src="{{ asset('asset/whatsapp.png') }}" /> 089669320161</div>
+          <div class="social-item"><img src="{{ asset('asset/customer-service.png') }}" /> 0271-700</div>
+          <div class="social-item"><img src="{{ asset('asset/email.png') }}" /> support@KiApotik.com</div>
+          <div class="social-item"><img src="{{ asset('asset/calendar.png') }}" /> Senin s/d Minggu</div>
+          <div class="social-item"><img src="{{ asset('asset/clock.png') }}" /> 08:00 - 21:00 WIB</div>
           <div class="logo-row-2">
-            <img src="asset/kemenkess.png" />
-            <img src="asset/bsii.jpeg" />
+            <img src="{{ asset('asset/kemenkess.png') }}" />
+            <img src="{{ asset('asset/bsii.jpeg') }}" />
           </div>
           <p>
             KiApotik adalah Penyelenggara Sistem</br>
@@ -122,6 +122,6 @@
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
