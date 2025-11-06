@@ -45,7 +45,7 @@ header {
   object-fit: cover;
 }
 
-header::after {
+.main-header::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -706,12 +706,6 @@ input[type="text"]:focus {
   color: #333;
 }
 
-.kontak-section {
-  padding: 40px 20px;
-  font-family: 'Nunito', sans-serif;
-  background-color: #f9f9f9;
-}
-
 .kontak-container {
   display: flex;
   flex-wrap: wrap;
@@ -784,10 +778,10 @@ input[type="text"]:focus {
   vertical-align: middle;
 }
 
-/* === Sidebar === */
 .sidebar {
   width: 240px;
-  background-color: #1f2937; /* abu tua */
+  background-color: #f9f9f9;
+  border-right: 3px solid #12284b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -804,71 +798,55 @@ input[type="text"]:focus {
   border-radius: 10px;
   background-color: #ffffff;
   padding: 5px;
-}
-
-.sidebar .nav-link {
-  color: #cbd5e1;
-  margin-bottom: 10px;
-  text-align: center;
-  padding: 8px 15px;
-  border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.sidebar .nav-link.active,
-.sidebar .nav-link:hover {
-  background-color: #374151;
-  color: #ffffff;
-}
-
-/* === Content Area === */
-.content {
-  background-color: #f9fafb;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* === Sidebar === */
-.sidebar {
-  width: 240px;
-  background-color: #1f2937;
-  min-height: 100vh;
-}
-
-.sidebar .nav-link {
-  color: #cbd5e1;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.sidebar .nav-link.active,
-.sidebar .nav-link:hover {
-  background-color: #374151;
-  border-radius: 8px;
-  color: #ffffff;
-}
-
-.logo-img {
   width: 140px;
   height: auto;
 }
 
-/* === Header (Admin) === */
+.sidebar .nav-link {
+  color: #0072ff;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 8px 15px;
+  border: 1px solid #0072ff;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat-Bold';
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* ubah ke putih total */
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background: #0072ff;
+  color: #f9f9f9;
+}
+
+.sidebar .nav-link.text-danger:hover {
+  background: #0072ff;
+  color: #f9f9f9 !important;
+}
+
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #111827;
+  background: linear-gradient(90deg, #12284b 0%, #0072ff 100%);
   border-bottom: 2px solid #e5e7eb;
   padding: 12px 24px;
   position: relative;
+  z-index: 2;
 }
 
 .header-title h5 {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 32px;
+  font-family: 'Montserrat-Bold';
   color: #ffffff;
 }
 
@@ -877,25 +855,18 @@ input[type="text"]:focus {
   right: 32px;
   top: 10px;
   font-weight: 700;
-  color: #ffffff !important; /* pastikan teks benar-benar putih */
+  color: #ffffff !important; 
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 0.95rem;
-  z-index: 10; /* pastikan di atas elemen lain */
+  z-index: 10;
 }
 
-/* === Konten === */
-.content {
-  background-color: #f9fafb;
-}
-
-/* === Tabel & Gambar === */
 .table img {
   border-radius: 8px;
   max-width: 80px;
 }
 
-/* === Responsif === */
 @media (max-width: 768px) {
   .sidebar {
     width: 100px;

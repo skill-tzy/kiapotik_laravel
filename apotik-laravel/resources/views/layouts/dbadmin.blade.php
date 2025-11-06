@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="d-flex">
-        <!-- Sidebar -->
         <div class="sidebar p-3">
             <div class="logo-container text-center mb-4">
                 <img src="{{ asset('asset/kiapotik.png') }}" alt="Logo Admin" class="logo-img">
@@ -17,12 +16,11 @@
             <ul class="nav flex-column">
                 <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
                 <li class="nav-item"><a href="{{ url('/inventori') }}" class="nav-link active">Inventori</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-danger">Logout</a></li>
+                <li class="nav-item"><a href="{{ url('/') }}" class="nav-link text-danger">Logout</a></li>
             </ul>
         </div>
 
-        <!-- Content -->
-        <div class="content flex-grow-1">
+        <div class="content">
             <header class="admin-header">
                 <div class="header-title">
                     <h5>Inventori Produk</h5>

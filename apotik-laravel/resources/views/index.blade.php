@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 </head>
 <body>
-  <header>
+  <header class="main-header">
     <img src="{{ asset('asset/background.webp') }}" alt="Header Background" class="header-bg" />
     <div class="navbar">
       <div class="logo">
