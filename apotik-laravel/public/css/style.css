@@ -784,6 +784,52 @@ input[type="text"]:focus {
   vertical-align: middle;
 }
 
+/* === Sidebar === */
+.sidebar {
+  width: 240px;
+  background-color: #1f2937; /* abu tua */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.sidebar-logo {
+  text-align: center;
+}
+
+.logo-img {
+  max-width: 150px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 5px;
+}
+
+.sidebar .nav-link {
+  color: #cbd5e1;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+/* === Content Area === */
+.content {
+  background-color: #f9fafb;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Sidebar === */
 .sidebar {
   width: 240px;
   background-color: #1f2937;
@@ -793,19 +839,86 @@ input[type="text"]:focus {
 .sidebar .nav-link {
   color: #cbd5e1;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .sidebar .nav-link.active,
 .sidebar .nav-link:hover {
   background-color: #374151;
   border-radius: 8px;
-  color: white;
+  color: #ffffff;
 }
 
+.logo-img {
+  width: 140px;
+  height: auto;
+}
+
+/* === Header (Admin) === */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111827;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 12px 24px;
+  position: relative;
+}
+
+.header-title h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.header-user {
+  position: absolute;
+  right: 32px;
+  top: 10px;
+  font-weight: 700;
+  color: #ffffff !important; /* pastikan teks benar-benar putih */
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  z-index: 10; /* pastikan di atas elemen lain */
+}
+
+/* === Konten === */
 .content {
   background-color: #f9fafb;
 }
 
+/* === Tabel & Gambar === */
 .table img {
   border-radius: 8px;
+  max-width: 80px;
+}
+
+/* === Responsif === */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  .logo-img {
+    max-width: 80px;
+  }
+
+  .sidebar .nav-link {
+    font-size: 14px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .header-user {
+    position: static;
+    background: #2563eb;
+    color: white;
+    margin-top: 8px;
+  }
 }

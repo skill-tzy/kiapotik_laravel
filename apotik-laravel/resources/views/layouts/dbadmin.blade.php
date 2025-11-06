@@ -11,7 +11,9 @@
     <div class="d-flex">
         <!-- Sidebar -->
         <div class="sidebar p-3">
-            <h3 class="text-white mb-4">Admin Panel</h3>
+            <div class="logo-container text-center mb-4">
+                <img src="{{ asset('asset/kiapotik.png') }}" alt="Logo Admin" class="logo-img">
+            </div>
             <ul class="nav flex-column">
                 <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
                 <li class="nav-item"><a href="{{ url('/inventori') }}" class="nav-link active">Inventori</a></li>
@@ -21,9 +23,13 @@
 
         <!-- Content -->
         <div class="content flex-grow-1">
-            <header class="d-flex justify-content-between align-items-center p-3 border-bottom bg-white">
-                <h5 class="mb-0">Inventori Produk</h5>
-                <span class="fw-bold text-primary">👤 {{ Auth::user()->name ?? 'Admin' }}</span>
+            <header class="admin-header">
+                <div class="header-title">
+                    <h5>Inventori Produk</h5>
+                </div>
+                <div class="header-user">
+                    <span>👤 {{ Auth::user()->name ?? 'Admin' }}</span>
+                </div>
             </header>
 
             <main class="p-4">
