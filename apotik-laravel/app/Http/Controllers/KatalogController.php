@@ -10,7 +10,6 @@ class KatalogController extends Controller
     public function index()
     {
         $produk = Produk::all();
-
         return view('katalog', compact('produk'));
     }
 }

@@ -140,3 +140,41 @@ function printReceipt(e) {
 
   strukWindow.document.close();
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Cegah modal tertutup saat klik di dalam form
+    const modals = document.querySelectorAll('.modal');
+
+    modals.forEach(modal => {
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+        }
+    });
+
+    console.log('✅ script.js berhasil dimuat');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const formEdit = document.getElementById('formEdit');
+
+    document.querySelectorAll('.btn-edit').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.dataset.id;
+            const nama = this.dataset.nama;
+            const harga = this.dataset.harga;
+            const stok = this.dataset.stok;
+
+            document.getElementById('edit-id').value = id;
+            document.getElementById('edit-nama').value = nama;
+            document.getElementById('edit-harga').value = harga;
+            document.getElementById('edit-stok').value = stok;
+
+            // set action form dinamis
+            formEdit.action = `/inventori/${id}`;
+        });
+    });
+});
+

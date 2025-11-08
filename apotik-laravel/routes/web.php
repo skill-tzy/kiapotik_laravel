@@ -12,19 +12,14 @@ Route::get('/tentang', function () {
     return view('tentang');
 });
 
-Route::get('/katalog', function () {
-    return view('katalog');
-});
-
 Route::get('/kontak', function () {
     return view('kontak');
 });
 
-Route::get('/inventori', function () {
-    return view('inventori');
-});
-
+// HAPUS route duplikat /katalog di atas
 Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog');
+
+// Route Inventori
 Route::get('/inventori', [InventoriController::class, 'index'])->name('inventori.index');
 Route::post('/inventori', [InventoriController::class, 'store'])->name('inventori.store');
 Route::put('/inventori/{id}', [InventoriController::class, 'update'])->name('inventori.update');

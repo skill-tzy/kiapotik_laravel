@@ -862,9 +862,31 @@ input[type="text"]:focus {
   z-index: 10;
 }
 
-.table img {
-  border-radius: 8px;
-  max-width: 80px;
+.inventori-container {
+    padding: 20px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+}
+
+.produk-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.modal-header {
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
