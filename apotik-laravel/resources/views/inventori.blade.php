@@ -25,12 +25,12 @@
         <td>{{ $index + 1 }}</td>
         <td>
           @if($item->gambar)
-            <img src="{{ asset('storage/produk/' . $item->gambar) }}" class="produk-img" alt="{{ $item->nama }}">
+            <img src="{{ asset($item->gambar) }}" class="produk-img" alt="{{ $item->nama }}">
           @else
             <span class="text-muted">Tidak ada</span>
           @endif
         </td>
-        <td>{{ $item->nama }}</td>
+        <td class="text-left">{{ $item->nama }}</td>
         <td>Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
         <td>{{ $item->stok }}</td>
         <td>
@@ -54,6 +54,9 @@
       @empty
       <tr><td colspan="6" class="text-center">Belum ada produk</td></tr>
       @endforelse
+        <div id="imgModal" class="img-modal">
+            <img id="imgPreview" src="" alt="Preview">
+        </div>
     </tbody>
   </table>
   <!-- Modal Edit -->

@@ -205,3 +205,21 @@ function closeModal(id) {
     const modal = document.getElementById(id);
     if (modal) modal.style.display = 'none';
 }
+
+// === Klik gambar untuk memperbesar ===
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('imgPreview');
+
+    document.querySelectorAll('.produk-img').forEach(img => {
+        img.addEventListener('click', function () {
+            modalImg.src = this.src;
+            modal.classList.add('active');
+        });
+    });
+
+    // Klik area luar gambar untuk menutup modal
+    modal.addEventListener('click', function () {
+        modal.classList.remove('active');
+    });
+});
