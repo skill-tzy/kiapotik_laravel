@@ -21,7 +21,7 @@
         <li><a href="{{ url('/kontak') }}">Kontak</a></li>
       </ul>
       <div class="nav-right">
-        <a href="{{ url('/katalog') }}" class="download-btn">Pesan Obat</a>
+        <a href="{{ url('/inventori') }}" class="download-btn">Pesan Obat</a>
       </div>
     </div>
   </header>
