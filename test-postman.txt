@@ -1,0 +1,18 @@
+1. GET — Lihat Semua Produk
+Method: GET
+URL: http://127.0.0.1:8000/api/inventori
+Kegunaan: Menampilkan semua produk.
+
+2. POST — Tambah Produk
+Method: POST
+URL: http://127.0.0.1:8000/inventori
+
+Headers: Accept: application/json
+
+| Key    | Value (contoh)       | Type |
+| ------ | -------------------- | ---- |
+| nama   | Paracetamol 500mg    | text |
+| harga  | 12000                | text |
+| stok   | 50                   | text |
+| gambar | (pilih file jpg/png) | file |
+

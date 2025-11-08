@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\File;
 
 class InventoriController extends Controller
 {
+    // ================= Web =================
     public function index()
     {
         $produk = Produk::all();
         return view('inventori', compact('produk'));
     }
 
-    // === SIMPAN PRODUK BARU ===
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -24,7 +24,6 @@ class InventoriController extends Controller
             'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // Simpan gambar ke public/produk
         $file = $request->file('gambar');
         $filename = time() . '_' . $file->getClientOriginalName();
         $file->move(public_path('produk'), $filename);
@@ -33,13 +32,12 @@ class InventoriController extends Controller
             'nama' => $validated['nama'],
             'harga' => $validated['harga'],
             'stok' => $validated['stok'],
-            'gambar' => 'produk/' . $filename, // Simpan path relatif
+            'gambar' => 'produk/' . $filename,
         ]);
 
         return back()->with('success', 'Produk berhasil ditambahkan!');
     }
 
-    // === UPDATE PRODUK ===
     public function update(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
@@ -50,19 +48,16 @@ class InventoriController extends Controller
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // Jika user upload gambar baru
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
             if ($produk->gambar && File::exists(public_path($produk->gambar))) {
                 File::delete(public_path($produk->gambar));
             }
 
             $file = $request->file('gambar');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('produk'), $filename);
             $validated['gambar'] = 'produk/' . $filename;
+            $file->move(public_path('produk'), $filename);
         } else {
-            // Jika tidak upload gambar baru, gunakan gambar lama
             $validated['gambar'] = $produk->gambar;
         }
 
@@ -71,12 +66,10 @@ class InventoriController extends Controller
         return back()->with('success', 'Produk berhasil diperbarui!');
     }
 
-    // === HAPUS PRODUK ===
     public function destroy($id)
     {
         $produk = Produk::findOrFail($id);
 
-        // Hapus gambar fisik
         if ($produk->gambar && File::exists(public_path($produk->gambar))) {
             File::delete(public_path($produk->gambar));
         }
@@ -84,5 +77,90 @@ class InventoriController extends Controller
         $produk->delete();
 
         return back()->with('success', 'Produk berhasil dihapus!');
+    }
+
+    // ================= API =================
+    public function apiIndex()
+    {
+        $produk = Produk::all();
+        return response()->json([
+            'status' => 'success',
+            'data' => $produk
+        ]);
+    }
+
+    public function storeApi(Request $request)
+    {
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $file = $request->file('gambar');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('produk'), $filename);
+
+        $produk = Produk::create([
+            'nama' => $validated['nama'],
+            'harga' => $validated['harga'],
+            'stok' => $validated['stok'],
+            'gambar' => 'produk/' . $filename,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Produk berhasil ditambahkan!',
+            'data' => $produk
+        ]);
+    }
+
+    public function updateApi(Request $request, $id)
+    {
+        $produk = Produk::findOrFail($id);
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            if ($produk->gambar && File::exists(public_path($produk->gambar))) {
+                File::delete(public_path($produk->gambar));
+            }
+
+            $file = $request->file('gambar');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $validated['gambar'] = 'produk/' . $filename;
+            $file->move(public_path('produk'), $filename);
+        } else {
+            $validated['gambar'] = $produk->gambar;
+        }
+
+        $produk->update($validated);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Produk berhasil diperbarui!',
+            'data' => $produk
+        ]);
+    }
+
+    public function destroyApi($id)
+    {
+        $produk = Produk::findOrFail($id);
+
+        if ($produk->gambar && File::exists(public_path($produk->gambar))) {
+            File::delete(public_path($produk->gambar));
+        }
+
+        $produk->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Produk berhasil dihapus!'
+        ]);
     }
 }
