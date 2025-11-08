@@ -5,10 +5,11 @@ Kegunaan: Menampilkan semua produk.
 
 2. POST — Tambah Produk
 Method: POST
-URL: http://127.0.0.1:8000/inventori
+URL: http://127.0.0.1:8000/api/inventori
 
 Headers: Accept: application/json
 
+Body -> form-data
 | Key    | Value (contoh)       | Type |
 | ------ | -------------------- | ---- |
 | nama   | Paracetamol 500mg    | text |
@@ -16,3 +17,25 @@ Headers: Accept: application/json
 | stok   | 50                   | text |
 | gambar | (pilih file jpg/png) | file |
 
+3. PUT — Update Produk
+Method: PUT
+URL: http://127.0.0.1:8000/api/inventori/[id]
+contoh : http://127.0.0.1:8000/api/inventori/13
+
+Headers: 
+Accept: application/json
+Content-Type: application/json
+
+Body -> raw
+{
+  "nama": "Obat A Updated",
+  "harga": 12000,
+  "stok": 15
+}
+
+4. DELETE — Hapus Produk
+Method: DELETE
+URL: http://127.0.0.1:8000/api/inventori/[id]
+contoh : http://127.0.0.1:8000/api/inventori/14
+
+Headers: Accept: application/json
