@@ -142,10 +142,26 @@ function printReceipt(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Cegah modal tertutup saat klik di dalam form
+    console.log('✅ script.js berhasil dimuat');
+
+    // === Modal Manual ===
+    const btnTambah = document.getElementById('btnTambah');
+    const modalTambah = document.getElementById('modalTambah');
     const modals = document.querySelectorAll('.modal');
 
+    if (btnTambah && modalTambah) {
+        btnTambah.addEventListener('click', () => {
+            modalTambah.style.display = 'flex';
+        });
+    }
+
     modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent) {
             modalContent.addEventListener('click', function (event) {
@@ -154,11 +170,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    console.log('✅ script.js berhasil dimuat');
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+    // === Modal Edit ===
     const formEdit = document.getElementById('formEdit');
+    const modalEdit = document.getElementById('modalEdit');
 
     document.querySelectorAll('.btn-edit').forEach(button => {
         button.addEventListener('click', function() {
@@ -172,9 +186,22 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('edit-harga').value = harga;
             document.getElementById('edit-stok').value = stok;
 
-            // set action form dinamis
-            formEdit.action = `/inventori/${id}`;
+            if (formEdit) formEdit.action = `/inventori/${id}`;
+            if (modalEdit) modalEdit.style.display = 'flex';
         });
     });
-});
 
+    // Tombol tutup manual (opsional)
+    document.querySelectorAll('.btn-close-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const target = this.dataset.target;
+            document.getElementById(target).style.display = 'none';
+        });  
+    });
+}); // ← ini penutup event DOMContentLoaded
+
+// === Fungsi Tutup Modal Manual (dipakai tombol "Batal") ===
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.style.display = 'none';
+}
