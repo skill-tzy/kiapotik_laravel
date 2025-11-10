@@ -39,3 +39,43 @@ URL: http://127.0.0.1:8000/api/inventori/[id]
 contoh : http://127.0.0.1:8000/api/inventori/14
 
 Headers: Accept: application/json
+
+5. GET — check endpoint
+Method: GET
+URL: http://127.0.0.1:8000/api/health
+Kegunaan: mengetes apakah server atau API kamu sedang hidup (aktif) dan bisa merespons dengan benar.
+
+6. POST — buat akun baru
+Method: POST
+URL: http://127.0.0.1:8000/api/auth/register
+
+Body -> raw
+{
+  "name": "Demo User",
+  "email": "demo@example.test",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+7. POST — login - ambil token
+Method: POST
+URL: http://127.0.0.1:8000/api/auth/login
+
+Body -> raw
+{"email":"demo@example.test","password":"password"}
+
+Ambil Token
+
+8. GET — Me (cek siapa yang login)
+Method: GET
+URL: http://127.0.0.1:8000/api/auth/me
+
+Headers: Authorization: Bearer <token>
+
+9. POST — Logout
+Method: POST
+URL: http://127.0.0.1:8000/api/auth/logout
+
+Headers: Authorization: Bearer <token>
+
+
