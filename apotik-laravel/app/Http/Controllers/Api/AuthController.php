@@ -39,7 +39,6 @@ class AuthController extends Controller
             return response()->json(['message'=>'invalid credentials'], 401);
         }
 
-        // Personal access token
         $token = $user->createToken('api')->plainTextToken;
 
         return response()->json([
@@ -58,7 +57,6 @@ class AuthController extends Controller
 
     public function logout(Request $r)
     {
-        // hapus token yang dipakai saat ini
         $r->user()->currentAccessToken()->delete();
         return response()->json(['message'=>'logged out']);
     }

@@ -11,7 +11,6 @@
 <body>
     <div class="d-flex">
 
-        <!-- Sidebar -->
         <div class="sidebar p-3">
             <div class="logo-container text-center mb-4">
                 <img src="{{ asset('asset/kiapotik.png') }}" alt="Logo Admin" class="logo-img">
@@ -23,10 +22,8 @@
             </ul>
         </div>
 
-        <!-- Main wrapper -->
         <div class="main-wrapper flex-grow-1">
             
-            <!-- Header -->
             <header class="admin-header">
                 <div class="header-title">
                     <h5>Inventori Produk</h5>
@@ -36,7 +33,6 @@
                 </div>
             </header>
 
-            <!-- Konten utama -->
             <main class="main-content p-4">
                 @yield('content')
             </main>

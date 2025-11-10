@@ -144,7 +144,6 @@ function printReceipt(e) {
 document.addEventListener('DOMContentLoaded', function () {
     console.log('✅ script.js berhasil dimuat');
 
-    // === Modal Manual ===
     const btnTambah = document.getElementById('btnTambah');
     const modalTambah = document.getElementById('modalTambah');
     const modals = document.querySelectorAll('.modal');
@@ -170,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // === Modal Edit ===
     const formEdit = document.getElementById('formEdit');
     const modalEdit = document.getElementById('modalEdit');
 
@@ -191,22 +189,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Tombol tutup manual (opsional)
     document.querySelectorAll('.btn-close-modal').forEach(btn => {
         btn.addEventListener('click', function() {
             const target = this.dataset.target;
             document.getElementById(target).style.display = 'none';
         });  
     });
-}); // ← ini penutup event DOMContentLoaded
+}); 
 
-// === Fungsi Tutup Modal Manual (dipakai tombol "Batal") ===
 function closeModal(id) {
     const modal = document.getElementById(id);
     if (modal) modal.style.display = 'none';
 }
 
-// === Klik gambar untuk memperbesar ===
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('imgModal');
     const modalImg = document.getElementById('imgPreview');
@@ -218,7 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Klik area luar gambar untuk menutup modal
     modal.addEventListener('click', function () {
         modal.classList.remove('active');
     });

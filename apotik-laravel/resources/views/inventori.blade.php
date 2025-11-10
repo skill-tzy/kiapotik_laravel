@@ -7,7 +7,6 @@
     <button class="btn btn-success" id="btnTambah">+ Tambah Produk</button>
   </div>
 
-  <!-- TABEL PRODUK -->
   <table class="inventori-table">
     <thead>
       <tr>
@@ -59,7 +58,7 @@
         </div>
     </tbody>
   </table>
-  <!-- Modal Edit -->
+
 <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -106,7 +105,6 @@
 </div>
 </div>
 
-<!-- MODAL TAMBAH -->
 <div id="modalTambah" class="modal">
   <div class="modal-content">
     <h5>Tambah Produk</h5>

@@ -924,13 +924,11 @@ z-index: 10;
   }
 }
 
-/* Container */
 .inventori-container {
   padding: 20px;
   font-family: 'Nunito', sans-serif;
 }
 
-/* Header atas */
 .inventori-header {
   display: flex;
   justify-content: space-between;
@@ -938,7 +936,6 @@ z-index: 10;
   margin-bottom: 15px;
 }
 
-/* Tombol */
 .btn {
   padding: 8px 14px;
   border: none;
@@ -954,7 +951,6 @@ z-index: 10;
 .btn-secondary { background-color: #6c757d; color: white; }
 .btn-sm { padding: 5px 10px; font-size: 13px; }
 
-/* Tabel */
 .inventori-table {
   width: 100%;
   border-collapse: collapse;
@@ -974,7 +970,6 @@ z-index: 10;
   border-bottom: 1px solid #eee;
 }
 
-/* Gambar produk */
 .produk-img {
   width: 60px;
   height: 60px;
@@ -983,7 +978,6 @@ z-index: 10;
   border: 1px solid #ddd;
 }
 
-/* Efek gambar membesar saat diklik */
 .produk-img {
     width: 60px;
     height: 60px;
@@ -993,7 +987,6 @@ z-index: 10;
     transition: transform 0.2s ease;
 }
 
-/* Modal zoom gambar */
 .img-modal {
     display: none;
     position: fixed;
@@ -1022,7 +1015,6 @@ z-index: 10;
     text-align: left !important;
 }
 
-/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -1067,11 +1059,10 @@ z-index: 10;
   gap: 10px;
 }
 
-/* --- Modal Custom Tambah Produk --- */
 #modalTambah {
   display: none;
   position: fixed;
-  z-index: 1050; /* Lebih rendah dari modal Bootstrap (default 1055) */
+  z-index: 1050; 
   left: 0;
   top: 0;
   width: 100%;
@@ -1091,22 +1082,19 @@ z-index: 10;
   animation: fadeIn 0.3s ease;
 }
 
-/* === FIX: Modal Edit Tidak Bisa Diklik (Tertutup Backdrop) === */
 #modalEdit {
-  z-index: 1060 !important; /* Naikkan di atas backdrop Bootstrap (1050-1055) */
+  z-index: 1060 !important; 
 }
 
 .modal-backdrop.show {
-  z-index: 1055 !important; /* Pastikan backdrop di bawah modal */
+  z-index: 1055 !important; 
 }
 
-/* Efek animasi lembut */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Tombol close agar tampil normal */
 .btn-close-modal {
   background: none;
   border: none;
@@ -1114,7 +1102,6 @@ z-index: 10;
   cursor: pointer;
 }
 
-/* Biar teks tengah */
 .text-center {
   text-align: center;
 }
