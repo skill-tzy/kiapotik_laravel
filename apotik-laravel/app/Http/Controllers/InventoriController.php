@@ -18,9 +18,9 @@ class InventoriController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string',
-            'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
+            'nama'   => 'required|string',
+            'harga'  => 'required|numeric',
+            'stok'   => 'required|numeric',
             'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -29,10 +29,11 @@ class InventoriController extends Controller
         $file->move(public_path('produk'), $filename);
 
         Produk::create([
-            'nama' => $validated['nama'],
-            'harga' => $validated['harga'],
-            'stok' => $validated['stok'],
-            'gambar' => 'produk/' . $filename,
+            'nama'    => $validated['nama'],
+            'harga'   => $validated['harga'],
+            'stok'    => $validated['stok'],
+            'gambar'  => 'produk/' . $filename,
+            'user_id' => auth()->id()
         ]);
 
         return back()->with('success', 'Produk berhasil ditambahkan!');
@@ -41,10 +42,18 @@ class InventoriController extends Controller
     public function update(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
+
+        if (
+            $produk->user_id !== auth()->id() &&
+            auth()->user()->role !== 'admin'
+        ) {
+            abort(403, 'Forbidden');
+        }
+
         $validated = $request->validate([
-            'nama' => 'required|string',
-            'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
+            'nama'   => 'required|string',
+            'harga'  => 'required|numeric',
+            'stok'   => 'required|numeric',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -70,6 +79,13 @@ class InventoriController extends Controller
     {
         $produk = Produk::findOrFail($id);
 
+        if (
+            $produk->user_id !== auth()->id() &&
+            auth()->user()->role !== 'admin'
+        ) {
+            abort(403, 'Forbidden');
+        }
+
         if ($produk->gambar && File::exists(public_path($produk->gambar))) {
             File::delete(public_path($produk->gambar));
         }
@@ -82,19 +98,18 @@ class InventoriController extends Controller
     // ================= API =================
     public function apiIndex()
     {
-        $produk = Produk::all();
         return response()->json([
             'status' => 'success',
-            'data' => $produk
+            'data'   => Produk::all()
         ]);
     }
 
     public function storeApi(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string',
-            'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
+            'nama'   => 'required|string',
+            'harga'  => 'required|numeric',
+            'stok'   => 'required|numeric',
             'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -103,26 +118,37 @@ class InventoriController extends Controller
         $file->move(public_path('produk'), $filename);
 
         $produk = Produk::create([
-            'nama' => $validated['nama'],
-            'harga' => $validated['harga'],
-            'stok' => $validated['stok'],
-            'gambar' => 'produk/' . $filename,
+            'nama'    => $validated['nama'],
+            'harga'   => $validated['harga'],
+            'stok'    => $validated['stok'],
+            'gambar'  => 'produk/' . $filename,
+            'user_id' => auth()->id() // 🔑 WAJIB
         ]);
 
         return response()->json([
-            'status' => 'success',
+            'status'  => 'success',
             'message' => 'Produk berhasil ditambahkan!',
-            'data' => $produk
+            'data'    => $produk
         ]);
     }
 
     public function updateApi(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
+
+        if (
+            $produk->user_id !== auth()->id() &&
+            auth()->user()->role !== 'admin'
+        ) {
+            return response()->json([
+                'message' => 'Forbidden'
+            ], 403);
+        }
+
         $validated = $request->validate([
-            'nama' => 'required|string',
-            'harga' => 'required|numeric',
-            'stok' => 'required|numeric',
+            'nama'   => 'required|string',
+            'harga'  => 'required|numeric',
+            'stok'   => 'required|numeric',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -142,15 +168,24 @@ class InventoriController extends Controller
         $produk->update($validated);
 
         return response()->json([
-            'status' => 'success',
+            'status'  => 'success',
             'message' => 'Produk berhasil diperbarui!',
-            'data' => $produk
+            'data'    => $produk
         ]);
     }
 
     public function destroyApi($id)
     {
         $produk = Produk::findOrFail($id);
+
+        if (
+            $produk->user_id !== auth()->id() &&
+            auth()->user()->role !== 'admin'
+        ) {
+            return response()->json([
+                'message' => 'Forbidden'
+            ], 403);
+        }
 
         if ($produk->gambar && File::exists(public_path($produk->gambar))) {
             File::delete(public_path($produk->gambar));
@@ -159,7 +194,7 @@ class InventoriController extends Controller
         $produk->delete();
 
         return response()->json([
-            'status' => 'success',
+            'status'  => 'success',
             'message' => 'Produk berhasil dihapus!'
         ]);
     }
