@@ -659,7 +659,8 @@ input[type="text"]:focus {
 }
 
 .tentang-container {
-  max-width: 950px;
+  max-width: 1000px;
+  width: 100%;
   margin: auto;
   padding: 20px;
   font-family: 'Nunito', sans-serif;
@@ -670,6 +671,7 @@ input[type="text"]:focus {
 .tentang-deskripsi {
   margin-bottom: 20px;
   font-size: 16px;
+  text-align: justify;
 }
 
 .statistik-wrapper {
@@ -686,7 +688,7 @@ input[type="text"]:focus {
 
 .statistik-box img {
   width: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .statistik-box h3 {
@@ -705,7 +707,7 @@ input[type="text"]:focus {
 .tentang-komitmen {
   background-color: #f4f9fc;
   border-left: 4px solid #3498db;
-  padding: 20px;
+  padding: 30px;
   border-radius: 6px;
 }
 
