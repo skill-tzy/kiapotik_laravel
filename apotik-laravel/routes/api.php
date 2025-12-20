@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\InventoriController;
 use App\Models\User;
 
@@ -11,6 +12,7 @@ use App\Models\User;
 |--------------------------------------------------------------------------
 */
 Route::get('/health', fn () => response()->json(['status' => 'ok']));
+Route::get('/katalog', [KatalogController::class, 'publicIndex']);
 
 /*
 |--------------------------------------------------------------------------

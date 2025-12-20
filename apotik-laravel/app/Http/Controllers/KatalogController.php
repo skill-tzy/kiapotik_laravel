@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class KatalogController extends Controller
 {
+    public function publicIndex()
+    {
+        return response()->json(Produk::all());
+    }
+
     public function index()
     {
         $produk = Produk::all();
