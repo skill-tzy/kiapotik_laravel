@@ -30,7 +30,7 @@ export default function Katalog() {
           </ul>
 
           <div className="nav-right">
-            <Link to="/inventori" className="download-btn">
+            <Link to="/masuk" className="download-btn">
               Pesan Obat
             </Link>
           </div>
@@ -64,7 +64,7 @@ export default function Katalog() {
 
       <section className="pesan-obat">
         <div className="pesan-wrapper">
-          <Link to="/inventori" className="pesan-btn">
+          <Link to="/masuk" className="pesan-btn">
             Pesan Sekarang
           </Link>
         </div>

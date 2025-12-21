@@ -830,6 +830,7 @@ input[type="text"]:focus {
   cursor: pointer;
   text-decoration: none;
   font-family: 'Montserrat';
+  font-weight: 700;
 }
 
 .sidebar .nav-link.active,
@@ -1135,4 +1136,221 @@ z-index: 10;
 .inline-form button {
   margin-left: 4px;
   vertical-align: middle;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.login-left {
+  width: 50%;
+  background-color: #e5e8eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-image {
+  width: 70%;
+  max-width: 400px;
+}
+
+.login-right {
+  width: 30%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 200px;
+}
+
+.login-right h1 {
+  margin-bottom: 30px;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  color: #12284b;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  font-size: 14px;
+  font-family: 'Nunito';
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #12284b;
+}
+
+.login-form input {
+  padding: 12px;
+  margin-bottom: 6px;
+  font-family: 'Nunito';
+  font-weight: 400;
+  border: none;
+  background: #f1f3f5;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 14px 42px 14px 12px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.toggle-password:hover {
+  color: #2563eb;
+}
+
+.login-form button {
+  padding: 12px;
+  background: #2563eb;
+  color: #fff;
+  font-family: 'Nunito';
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.login-form button:hover {
+  background: #0b5ed7;
+}
+
+.divider {
+  margin: 30px 0;
+  height: 1px;
+  background: #ddd;
+}
+
+.register-link {
+  color: #12284b;
+  font-family: 'Nunito';
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  color: #2563eb;
+}
+
+.terms-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  margin: 10px 0 20px;
+}
+
+.terms-wrapper input[type="checkbox"] {
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.terms-wrapper label {
+  line-height: 1.5;
+}
+
+.terms-link {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+.login-form button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-card {
+  background: #fff;
+  padding: 40px 32px;
+  border-radius: 16px;
+  text-align: center;
+  font-family: 'Nunito';
+  font-weight: 700;
+  width: 360px;
+  animation: scaleIn 0.3s ease;
+}
+
+.popup-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  border: 5px solid #22c55e;
+  color: #22c55e;
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-card h2 {
+  margin-bottom: 8px;
+}
+
+.popup-card p {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.popup-card button {
+  width: 30%;
+  padding: 12px;
+  background: #2563eb;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.popup-card button:hover {
+  background: #1d4ed8;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

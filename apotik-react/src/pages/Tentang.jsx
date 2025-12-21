@@ -23,7 +23,7 @@ export default function Tentang() {
           </ul>
 
           <div className="nav-right">
-            <Link to="/inventori" className="download-btn">
+            <Link to="/masuk" className="download-btn">
               Pesan Obat
             </Link>
           </div>

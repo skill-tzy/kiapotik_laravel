@@ -31,7 +31,7 @@ export default function Home() {
           </ul>
 
           <div className="nav-right">
-            <Link to="/inventori" className="download-btn">
+            <Link to="/masuk" className="download-btn">
               Pesan Obat
             </Link>
           </div>
@@ -51,7 +51,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* PARTNER */}
       <section className="hero">
         <div className="partner-section">
           <h2 className="partner-title">Partner Kami</h2>

@@ -1,0 +1,47 @@
+.admin-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+/* Sidebar */
+.admin-page .sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #1e293b;
+  color: #fff;
+}
+
+.admin-page .logo-img {
+  width: 120px;
+}
+
+.admin-page .nav-link {
+  color: #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.admin-page .nav-link:hover,
+.admin-page .nav-link.active {
+  background: #334155;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.admin-page .main-wrapper {
+  background: #fff;
+}
+
+.admin-page .admin-header {
+  background: #ffffff;
+}
+
+.admin-page .main-content {
+  background: #f1f5f9;
+  min-height: calc(100vh - 60px);
+}
+
+.admin-page .inventori-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
