@@ -129,8 +129,16 @@ export default function KTadmin() {
                     <td>Rp {p.harga?.toLocaleString()}</td>
                     <td>{p.stok}</td>
                     <td>
-                      <button onClick={() => setEditData(p)}>Edit</button>
-                      <DeleteProduk onDelete={() => handleDelete(p.id)} />
+                      <div className="action-buttons">
+                        <button
+                          onClick={() => setEditData(p)}
+                          className="btn-edit"
+                        >
+                          Edit
+                        </button>
+                                        
+                        <DeleteProduk onDelete={() => handleDelete(p.id)} />
+                      </div>
                     </td>
                   </tr>
                 ))

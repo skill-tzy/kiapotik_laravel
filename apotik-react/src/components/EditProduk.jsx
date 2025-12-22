@@ -22,15 +22,15 @@ export default function EditProduk({ editData, token, onSave, onClose }) {
 
     try {
       const formData = new FormData();
-      formData.append("_method", "PUT"); // penting untuk Laravel API
+      formData.append("_method", "PUT");
       formData.append("nama", nama);
       formData.append("harga", harga);
       formData.append("stok", stok);
       if (gambar) formData.append("gambar", gambar);
 
       const res = await fetch(`http://localhost:8000/api/inventori/${editData.id}`, {
-        method: "POST", // pakai POST + _method=PUT
-        headers: { Authorization: `Bearer ${token}` }, // jangan pakai Content-Type
+        method: "POST", 
+        headers: { Authorization: `Bearer ${token}` },
         body: formData,
       });
 
@@ -39,7 +39,7 @@ export default function EditProduk({ editData, token, onSave, onClose }) {
       if (!res.ok) {
         alert(result.message || "Gagal memperbarui produk");
       } else {
-        onSave(result.data); // update state di KTadmin
+        onSave(result.data); 
         onClose();
       }
     } catch (err) {
@@ -54,37 +54,45 @@ export default function EditProduk({ editData, token, onSave, onClose }) {
     <div className="modal-overlay">
       <div className="modal-content">
         <h3>Edit Produk</h3>
-        <form onSubmit={handleSubmit} className="edit-form">
-          <label>Nama</label>
-          <input
-            type="text"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-            required
-          />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Nama</label>
+            <input
+              type="text"
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
+              required
+            />
+          </div>
 
-          <label>Harga</label>
-          <input
-            type="number"
-            value={harga}
-            onChange={(e) => setHarga(e.target.value)}
-            required
-          />
+          <div className="form-group">
+            <label>Harga</label>
+            <input
+              type="number"
+              value={harga}
+              onChange={(e) => setHarga(e.target.value)}
+              required
+            />
+          </div>
 
-          <label>Stok</label>
-          <input
-            type="number"
-            value={stok}
-            onChange={(e) => setStok(e.target.value)}
-            required
-          />
+          <div className="form-group">
+            <label>Stok</label>
+            <input
+              type="number"
+              value={stok}
+              onChange={(e) => setStok(e.target.value)}
+              required
+            />
+          </div>
 
-          <label>Gambar</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setGambar(e.target.files[0])}
-          />
+          <div className="form-group">
+            <label>Gambar</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setGambar(e.target.files[0])}
+            />
+          </div>
 
           <div className="modal-actions">
             <button type="submit" className="confirm-btn" disabled={loading}>

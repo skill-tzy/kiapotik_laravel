@@ -51,7 +51,13 @@ export default function Daftar() {
   return (
     <div className="login-container">
       <div className="login-left">
-        <img src="/assets/kiapotik-rmbg.png" alt="Register" className="login-image" />
+        <img
+          src="/assets/kiapotik-rmbg.png"
+          alt="Login"
+          className="login-image"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        />
       </div>
 
       <div className="login-right">

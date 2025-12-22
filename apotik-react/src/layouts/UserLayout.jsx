@@ -9,7 +9,7 @@ export default function UserLayout({ userName = "Admin", children }) {
 
   const handleLogout = () => {
     logout();
-    navigate("/masuk");
+    navigate("/");
   };
 
   return (

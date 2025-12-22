@@ -46,43 +46,31 @@ export default function TambahProduk({ token, onSave, onClose }) {
       <div className="modal-content">
         <h3>Tambah Produk</h3>
         <form onSubmit={handleSubmit}>
-          <label>Nama Produk</label>
-          <input
-            type="text"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-            required
-          />
-
-          <label>Harga</label>
-          <input
-            type="number"
-            value={harga}
-            onChange={(e) => setHarga(e.target.value)}
-            required
-          />
-
-          <label>Stok</label>
-          <input
-            type="number"
-            value={stok}
-            onChange={(e) => setStok(e.target.value)}
-            required
-          />
-
-          <label>Gambar</label>
-          <input
-            type="file"
-            onChange={(e) => setGambar(e.target.files[0])}
-          />
-
+          <div className="form-group">
+            <label>Nama Produk</label>
+            <input type="text" value={nama} onChange={(e) => setNama(e.target.value)} required />
+          </div>
+          
+          <div className="form-group">
+            <label>Harga</label>
+            <input type="number" value={harga} onChange={(e) => setHarga(e.target.value)} required />
+          </div>
+          
+          <div className="form-group">
+            <label>Stok</label>
+            <input type="number" value={stok} onChange={(e) => setStok(e.target.value)} required />
+          </div>
+          
+          <div className="form-group">
+            <label>Gambar</label>
+            <input type="file" onChange={(e) => setGambar(e.target.files[0])} />
+          </div>
+          
           <div className="modal-actions">
             <button type="submit" disabled={loading}>
               {loading ? "Menyimpan..." : "Simpan"}
             </button>
-            <button type="button" onClick={onClose}>
-              Batal
-            </button>
+            <button type="button" onClick={onClose}>Batal</button>
           </div>
         </form>
       </div>

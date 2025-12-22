@@ -40,7 +40,13 @@ export default function Masuk() {
   return (
     <div className="login-container">
       <div className="login-left">
-        <img src="/assets/kiapotik-rmbg.png" alt="Login" className="login-image" />
+        <img
+          src="/assets/kiapotik-rmbg.png"
+          alt="Login"
+          className="login-image"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        />
       </div>
 
       <div className="login-right">
