@@ -44,7 +44,7 @@ export default function Masuk() {
       </div>
 
       <div className="login-right">
-        <h1>Log In</h1>
+        <h1>Masuk</h1>
 
         {error && <p className="error-text">{error}</p>}
 

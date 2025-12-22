@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function AdminLayout({ userName = "Admin", children }) {
+export default function UserLayout({ userName = "Admin", children }) {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
@@ -25,14 +25,11 @@ export default function AdminLayout({ userName = "Admin", children }) {
         </div>
 
         <nav className="admin-nav">
-          <Link to="/dashboard" className="admin-link">
+          <Link to="/ktuser" className="admin-link active">
             Dashboard
           </Link>
-          <Link to="/pesanan" className="admin-link">
-            Pesanan
-          </Link>
-          <Link to="/ktadmin" className="admin-link active">
-            Katalog
+          <Link to="/order" className="admin-link">
+            order
           </Link>
           <button onClick={handleLogout} className="admin-link logout">
             Keluar
