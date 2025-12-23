@@ -1,26 +1,11 @@
-1. GET — Lihat Semua Produk
+a. Check Endpoint
 Method: GET
-URL: http://127.0.0.1:8000/api/inventori
-Kegunaan: Menampilkan semua produk.
+URL: http://127.0.0.1:8000/api/health
+Kegunaan: mengetes apakah server atau API kamu sedang hidup (aktif) dan bisa merespons dengan benar.
 
-2. POST — Tambah Produk
+b. Buat Akun Baru
 Method: POST
-URL: http://127.0.0.1:8000/api/inventori
-
-Headers: Accept: application/json
-
-Body -> form-data
-| Key    | Value (contoh)       | Type |
-| ------ | -------------------- | ---- |
-| nama   | Paracetamol 500mg    | text |
-| harga  | 12000                | text |
-| stok   | 50                   | text |
-| gambar | (pilih file jpg/png) | file |
-
-3. PUT — Update Produk
-Method: PUT
-URL: http://127.0.0.1:8000/api/inventori/[id]
-contoh : http://127.0.0.1:8000/api/inventori/13
+URL: http://127.0.0.1:8000/api/auth/register
 
 Headers: 
 Accept: application/json
@@ -28,54 +13,87 @@ Content-Type: application/json
 
 Body -> raw
 {
-  "nama": "Obat A Updated",
-  "harga": 12000,
-  "stok": 15
-}
-
-4. DELETE — Hapus Produk
-Method: DELETE
-URL: http://127.0.0.1:8000/api/inventori/[id]
-contoh : http://127.0.0.1:8000/api/inventori/14
-
-Headers: Accept: application/json
-
-5. GET — check endpoint
-Method: GET
-URL: http://127.0.0.1:8000/api/health
-Kegunaan: mengetes apakah server atau API kamu sedang hidup (aktif) dan bisa merespons dengan benar.
-
-6. POST — buat akun baru
-Method: POST
-URL: http://127.0.0.1:8000/api/auth/register
-
-Body -> raw
-{
-  "name": "Demo User",
-  "email": "demo@example.test",
+  "name": "Adzkia",
+  "email": "adzkia@gmail.com",
   "password": "password",
   "password_confirmation": "password"
 }
 
-7. POST — login - ambil token
+c. Login - Ambil Token
 Method: POST
 URL: http://127.0.0.1:8000/api/auth/login
 
 Body -> raw
 {"email":"demo@example.test","password":"password"}
 
-Ambil Token
+*Ambil Token
 
-8. GET — Me (cek siapa yang login)
+d. Me (cek siapa yang login)
 Method: GET
 URL: http://127.0.0.1:8000/api/auth/me
 
-Headers: Authorization: Bearer <token>
+Headers: 
+Authorization: Bearer <token
 
-9. POST — Logout
+e. Lihat Semua Produk
+Method: GET
+URL: http://127.0.0.1:8000/api/inventori
+
+Headers: 
+Authorization: Bearer <token>
+
+e. Lihat Semua Produk
+Method: GET
+URL: http://127.0.0.1:8000/api/inventori
+
+Headers: 
+Authorization: Bearer <token>
+
+f. Tambah Produk
+Method: POST
+URL: http://127.0.0.1:8000/api/inventori
+
+Headers: 
+Accept: application/json
+Authorization: Bearer <token>
+
+Body -> form-data
+Key   	|Value (contoh)       |Type
+===================================
+nama	  |ANTANGIN 500mg    	  |text
+harga	  |12000	              |text
+stok	  |50	                  |text
+gambar	|(pilih file jpg/png)	|file
+
+g. Update Produk
+Method: PUT
+URL: http://127.0.0.1:8000/api/inventori/[id]
+contoh : http://127.0.0.1:8000/api/inventori/15
+
+Headers: 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer <token>
+
+Body -> raw
+{
+  "nama": "ANTANGIN 500MG",
+  "harga": 3000,
+  "stok": 100,
+} 
+
+h. Hapus Produk
+Method: DELETE
+URL: http://127.0.0.1:8000/api/inventori/[id]
+contoh : http://127.0.0.1:8000/api/inventori/15
+
+Headers: 
+Accept: application/json
+Authorization: Bearer <token>
+
+i. Logout
 Method: POST
 URL: http://127.0.0.1:8000/api/auth/logout
 
-Headers: Authorization: Bearer <token>
-
-
+Headers: 
+Authorization: Bearer <token>
