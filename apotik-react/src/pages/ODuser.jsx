@@ -31,8 +31,6 @@ export default function ODuser() {
     fetchOrders();
   }, [token]);
 
-  if (loading) return <p>Loading...</p>;
-
   return (
     <UserLayout userName={user?.name || "Demo"}>
       <div className="inventori-container">

@@ -1,6 +1,6 @@
 import "../assets/css/admin.css";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function UserLayout({ userName = "Admin", children }) {
@@ -25,12 +25,24 @@ export default function UserLayout({ userName = "Admin", children }) {
         </div>
 
         <nav className="admin-nav">
-          <Link to="/ktuser" className="admin-link active">
+            <NavLink
+            to="/ktuser"
+            className={({ isActive }) =>
+              isActive ? "admin-link active" : "admin-link"
+            }
+          >
             Dashboard
-          </Link>
-          <Link to="/oduser" className="admin-link">
-            order
-          </Link>
+          </NavLink>
+
+          <NavLink
+            to="/oduser"
+            className={({ isActive }) =>
+              isActive ? "admin-link active" : "admin-link"
+            }
+          >
+            Order
+          </NavLink>
+          
           <button onClick={handleLogout} className="admin-link logout">
             Keluar
           </button>
