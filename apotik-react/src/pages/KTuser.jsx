@@ -26,9 +26,11 @@ export default function KTuser() {
 
         <KatalogList produk={produk} onAdd={addToCart} />
 
-        <div style={{ marginTop: "40px" }}>
-          <h3>Keranjang</h3>
+        <div className="cart-wrapper">
+          <h3 className="cart-title">Keranjang Belanja</h3>
+          
           <CartTable cart={cart} />
+          
           <CartActions />
         </div>
       </div>

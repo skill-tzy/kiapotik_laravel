@@ -46,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // ===== USER ORDER =====
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
     Route::get('/orders',    [CheckoutController::class, 'index']);
+    Route::put('/orders/{id}/cancel', [CheckoutController::class, 'cancel']);
 
     /*
     |--------------------------------------------------------------------------

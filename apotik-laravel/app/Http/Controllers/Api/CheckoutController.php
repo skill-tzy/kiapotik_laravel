@@ -83,4 +83,28 @@ class CheckoutController extends Controller
 
         return response()->json($orders);
     }
+    public function cancel($id, Request $request)
+    {
+        $user = $request->user();
+
+        $order = Order::where('id', $id)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+
+        if ($order->status !== 'Belum Bayar') {
+            return response()->json([
+                'message' => 'Order tidak dapat dibatalkan'
+            ], 400);
+        }
+
+        $order->update([
+            'status' => 'Batal'
+        ]);
+
+        return response()->json([
+            'message' => 'Order berhasil dibatalkan',
+            'order_id' => $order->id,
+            'status' => 'Batal'
+        ]);
+    }
 }

@@ -25,7 +25,6 @@ export default function CartActions() {
       });
 
       const data = await res.json();
-
       if (!res.ok) throw new Error(data.message || "Checkout gagal");
 
       alert("Checkout berhasil");
@@ -36,12 +35,12 @@ export default function CartActions() {
   };
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <button onClick={handleCheckout}>Order</button>
-      <button
-        onClick={clearCart}
-        style={{ marginLeft: "10px", background: "red", color: "white" }}
-      >
+    <div className="cart-actions">
+      <button className="btn-order" onClick={handleCheckout}>
+        Order
+      </button>
+
+      <button className="btn-clear" onClick={clearCart}>
         Bersihkan Keranjang
       </button>
     </div>
