@@ -1,8 +1,7 @@
-// src/components/AdminOrderList.jsx
 import React, { useState } from "react";
 
 export default function AdminOrderList({ orders, token, onUpdate }) {
-  const [updating, setUpdating] = useState({}); // track status update per order
+  const [updating, setUpdating] = useState({});
 
   const handleStatusChange = async (orderId, newStatus) => {
     setUpdating((prev) => ({ ...prev, [orderId]: true }));
@@ -37,6 +36,9 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
       {orders.map((order) => (
         <div key={order.id} className="order-box">
           <h3>Order #{order.id}</h3>
+            <p>
+              Pemesan: <strong>{order.user?.name || "Unknown User"}</strong>
+            </p>
           <p>Total Harga: Rp {Number(order.total_harga).toLocaleString("id-ID")}</p>
 
           {order.items && order.items.length > 0 && (
@@ -62,9 +64,11 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
             </table>
           )}
 
-          <div style={{ marginTop: "10px" }}>
-            <label>Status: </label>
+          <div className="admin-status-wrapper">
+            <label>Status:</label>
+
             <select
+              className={`admin-status-select status-${order.status.replace(" ", "-")}`}
               value={order.status}
               onChange={(e) => handleStatusChange(order.id, e.target.value)}
               disabled={updating[order.id]}
@@ -75,7 +79,10 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
               <option value="Selesai">Selesai</option>
               <option value="Batal">Batal</option>
             </select>
-            {updating[order.id] && <span> Updating...</span>}
+
+            {updating[order.id] && (
+              <span className="status-updating">Updating...</span>
+            )}
           </div>
         </div>
       ))}

@@ -240,22 +240,19 @@
   flex-direction: column;
 }
 
-/* Field wrapper */
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 12px; /* jarak antar field */
+  margin-bottom: 12px;
 }
 
-/* Label */
 .form-group label {
   font-size: 14px;
   font-weight: 700;
   color: #12284b;
-  margin-bottom: 4px; /* dekat ke input */
+  margin-bottom: 4px;
 }
 
-/* Input */
 .form-group input {
   padding: 10px 12px;
   font-size: 14px;
@@ -272,13 +269,11 @@
   background: #eef2f7;
 }
 
-/* File input */
 .form-group input[type="file"] {
   padding: 8px;
   background: transparent;
 }
 
-/* Action buttons */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -286,7 +281,6 @@
   margin-top: 16px;
 }
 
-/* Buttons */
 .modal-actions button {
   padding: 8px 16px;
   border-radius: 6px;
@@ -297,7 +291,6 @@
   font-family: 'Nunito';
 }
 
-/* Submit */
 .modal-actions button[type="submit"] {
   background: #334155;
   color: #ffffff;
@@ -308,7 +301,6 @@
   cursor: not-allowed;
 }
 
-/* Cancel */
 .modal-actions button[type="button"] {
   background: #e5e7eb;
   color: #1f2937;
@@ -329,4 +321,56 @@
 
 .btn-edit:hover {
   background: #1e293b;
+}
+
+.admin-status-wrapper {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.admin-status-select {
+  padding: 6px 14px;
+  font-family: 'Nunito';
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-status-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-Belum-Bayar {
+  background-color: #f59e0b; 
+}
+
+.status-Dikemas {
+  background-color: #3b82f6; 
+}
+
+.status-Dikirim {
+  background-color: #6366f1; 
+}
+
+.status-Selesai {
+  background-color: #16a34a; 
+}
+
+.status-Batal {
+  background-color: #dc2626; 
+}
+
+.status-updating {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
 }
