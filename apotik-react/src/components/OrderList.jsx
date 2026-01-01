@@ -29,7 +29,7 @@ export default function OrderList({ orders }) {
       }
 
       alert("Order berhasil dibatalkan");
-      window.location.reload(); // refresh sederhana & aman
+      window.location.reload();
     } catch (err) {
       alert(err.message);
     }
@@ -48,12 +48,6 @@ export default function OrderList({ orders }) {
             vaNumber={order.va_number}
           />
 
-          <p>
-            Total Harga: Rp{" "}
-            {Number(order.total_harga).toLocaleString("id-ID")}
-          </p>
-
-          {/* TOMBOL CANCEL – HANYA BELUM BAYAR */}
           {order.status === "Belum Bayar" && (
             <button
               className="btn-cancel"
@@ -62,6 +56,11 @@ export default function OrderList({ orders }) {
               Batalkan Order
             </button>
           )}
+
+          <p>
+            Total Harga: Rp{" "}
+            {Number(order.total_harga).toLocaleString("id-ID")}
+          </p>
 
           {order.items && order.items.length > 0 ? (
             <table className="cart-table">
