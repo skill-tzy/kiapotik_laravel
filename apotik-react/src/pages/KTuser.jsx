@@ -1,50 +1,35 @@
-import "../assets/css/admin.css";
+import "../assets/css/user.css";
 import React, { useState, useEffect } from "react";
 import UserLayout from "../layouts/UserLayout";
-import EditProduk from "../components/EditProduk";
-import TambahProduk from "../components/TambahProduk";
-import DeleteProduk from "../components/DeleteProduk";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import KatalogList from "../components/KatalogList";
+import CartTable from "../components/CartTable";
+import CartActions from "../components/CartActions";
 
 export default function KTuser() {
- const [produk, setProduk] = useState([]);
+  const [produk, setProduk] = useState([]);
+  const { user } = useAuth();
+  const { addToCart, cart } = useCart();
 
   useEffect(() => {
     fetch("http://localhost:8000/api/katalog")
       .then((res) => res.json())
       .then((data) => setProduk(data))
-      .catch((err) => console.error(err));
+      .catch(console.error);
   }, []);
-
-  const { token, user, loading: authLoading } = useAuth();
 
   return (
     <UserLayout userName={user?.name || "Demo"}>
       <div className="inventori-container">
-        <div className="inventori-header">
-          <h2>Dashboard Katalog</h2>
-        </div>
+        <h2>Dashboard Katalog</h2>
 
-        <div className="struktur-organisasi-container">
-          <div className="struktur-organisasi-row">
-            {produk.map((row) => (
-              <div className="struktur-organisasi-box" key={row.id}>
-                <img
-                  src={`http://localhost:8000/${row.gambar}`}
-                  alt={row.nama}
-                  className="struktur-organisasi-photo"
-                />
+        <KatalogList produk={produk} onAdd={addToCart} />
 
-                <div className="struktur-organisasi-info">
-                  <p className="struktur-organisasi-name">{row.nama}</p>
-                  <p className="struktur-organisasi-position">
-                    Rp {Number(row.harga).toLocaleString("id-ID")}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div style={{ marginTop: "40px" }}>
+          <h3>Keranjang</h3>
+          <CartTable cart={cart} />
+          <CartActions />
         </div>
       </div>
     </UserLayout>

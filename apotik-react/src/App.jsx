@@ -6,7 +6,9 @@ import Kontak from "./pages/Kontak";
 import Masuk from "./pages/Masuk";
 import Daftar from "./pages/Daftar";
 import KTadmin from "./pages/KTadmin";
+import ODadmin from "./pages/ODadmin";
 import KTuser from "./pages/KTuser";
+import ODuser from "./pages/ODuser";
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Route path="/masuk" element={<Masuk />} />
         <Route path="/daftar" element={<Daftar />} />
         <Route path="/ktadmin" element={<KTadmin />} />
+        <Route path="/odadmin" element={<ODadmin />} />
         <Route path="/ktuser" element={<KTuser />} />
+        <Route path="/oduser" element={<ODuser />} />
       </Routes>
   );
 }

@@ -28,7 +28,7 @@ export default function UserLayout({ userName = "Admin", children }) {
           <Link to="/ktuser" className="admin-link active">
             Dashboard
           </Link>
-          <Link to="/order" className="admin-link">
+          <Link to="/oduser" className="admin-link">
             order
           </Link>
           <button onClick={handleLogout} className="admin-link logout">

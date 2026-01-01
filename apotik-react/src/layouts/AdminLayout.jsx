@@ -28,8 +28,8 @@ export default function AdminLayout({ userName = "Admin", children }) {
           <Link to="/dashboard" className="admin-link">
             Dashboard
           </Link>
-          <Link to="/pesanan" className="admin-link">
-            Pesanan
+          <Link to="/odadmin" className="admin-link">
+            Order
           </Link>
           <Link to="/ktadmin" className="admin-link active">
             Katalog
