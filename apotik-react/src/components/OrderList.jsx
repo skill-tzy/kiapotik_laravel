@@ -48,7 +48,7 @@ export default function OrderList({ orders }) {
             vaNumber={order.va_number}
           />
 
-          {order.status === "Belum Bayar" && (
+          {order.status === "Menunggu Pembayaran" && (
             <button
               className="btn-cancel"
               onClick={() => handleCancel(order.id)}

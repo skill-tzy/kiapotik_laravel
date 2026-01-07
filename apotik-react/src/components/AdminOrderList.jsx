@@ -73,7 +73,7 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
               onChange={(e) => handleStatusChange(order.id, e.target.value)}
               disabled={updating[order.id]}
             >
-              <option value="Belum Bayar">Belum Bayar</option>
+              <option value="Menunggu Pembayaran">Menunggu Pembayaran</option>
               <option value="Dikemas">Dikemas</option>
               <option value="Dikirim">Dikirim</option>
               <option value="Selesai">Selesai</option>

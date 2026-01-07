@@ -4,7 +4,7 @@ export default function OrderItemStatus({ status, vaNumber }) {
   const [showModal, setShowModal] = useState(false);
 
   const statusClass = {
-    "Belum Bayar": "status-belum-bayar",
+    "Menunggu Pembayaran": "status-belum-bayar",
     "Dikemas": "status-dikemas",
     "Dikirim": "status-dikirim",
     "Selesai": "status-selesai",
@@ -12,7 +12,7 @@ export default function OrderItemStatus({ status, vaNumber }) {
   }[status];
 
   const handleClick = () => {
-    if (status === "Belum Bayar") {
+    if (status === "Menunggu Pembayaran") {
       setShowModal(true);
     }
   };
@@ -21,7 +21,7 @@ export default function OrderItemStatus({ status, vaNumber }) {
     <>
       <button
         onClick={handleClick}
-        disabled={status !== "Belum Bayar"}
+        disabled={status !== "Menunggu Pembayaran"}
         className={`status-btn ${statusClass}`}
       >
         {status}
