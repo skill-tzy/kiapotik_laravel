@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Produk;
+use Carbon\Carbon;
 
 class CheckoutController extends Controller
 {
@@ -38,6 +39,9 @@ class CheckoutController extends Controller
                     if ($produk->stok < $item['qty']) {
                         throw new \Exception("Stok {$produk->nama} tidak mencukupi");
                     }
+
+                    // Kurangi stok langsung
+                    $produk->decrement('stok', $item['qty']);
 
                     $subtotal = $produk->harga * $item['qty'];
 
@@ -72,6 +76,7 @@ class CheckoutController extends Controller
             ], 400);
         }
     }
+
     public function index(Request $request)
     {
         $user = $request->user();
@@ -83,6 +88,7 @@ class CheckoutController extends Controller
 
         return response()->json($orders);
     }
+
     public function cancel($id, Request $request)
     {
         $user = $request->user();
@@ -97,9 +103,13 @@ class CheckoutController extends Controller
             ], 400);
         }
 
-        $order->update([
-            'status' => 'Batal'
-        ]);
+        // Kembalikan stok saat dibatalkan
+        DB::transaction(function() use ($order) {
+            foreach ($order->items as $item) {
+                $item->produk->increment('stok', $item->qty);
+            }
+            $order->update(['status' => 'Batal']);
+        });
 
         return response()->json([
             'message' => 'Order berhasil dibatalkan',

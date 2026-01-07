@@ -34,6 +34,7 @@ export default function OrderItemStatus({ status, vaNumber }) {
             <p className="va-number">
               {vaNumber || "1234 5678 9012 3456"}
             </p>
+            <p>*Berlaku 1x24 Jam</p>
             <button className="btn-ok" onClick={() => setShowModal(false)}>
               Oke
             </button>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Produk;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -28,8 +30,9 @@ class OrderController extends Controller
             'status' => 'required|in:Menunggu Pembayaran,Dikemas,Dikirim,Selesai,Batal',
         ]);
 
-        $order = Order::with('items')->findOrFail($id);
+        $order = Order::with('items.produk')->findOrFail($id);
 
+        // Cegah update ke Dikemas kalau sudah Dikemas
         if ($order->status === 'Dikemas' && $request->status === 'Dikemas') {
             return response()->json([
                 'message' => 'Order sudah dikemas sebelumnya'
@@ -37,26 +40,17 @@ class OrderController extends Controller
         }
 
         try {
-            \DB::transaction(function () use ($order, $request) {
-                if ($request->status === 'Dikemas' && $order->status === 'Menunggu Pembayaran') {
+            DB::transaction(function () use ($order, $request) {
+
+                // Kembalikan stok saat batal
+                if ($request->status === 'Batal' && in_array($order->status, ['Menunggu Pembayaran', 'Dikemas'])) {
                     foreach ($order->items as $item) {
-                        $produk = \App\Models\Produk::lockForUpdate()->findOrFail($item->produk_id);
-
-                        if ($produk->stok < $item->qty) {
-                            throw new \Exception("Stok {$produk->nama} tidak mencukupi");
-                        }
-
-                        $produk->decrement('stok', $item->qty);
-                    }
-                }
-
-                if ($request->status === 'Batal' && $order->status === 'Dikemas') {
-                    foreach ($order->items as $item) {
-                        $produk = \App\Models\Produk::lockForUpdate()->findOrFail($item->produk_id);
+                        $produk = Produk::lockForUpdate()->findOrFail($item->produk_id);
                         $produk->increment('stok', $item->qty);
                     }
                 }
 
+                // Update status
                 $order->update([
                     'status' => $request->status
                 ]);

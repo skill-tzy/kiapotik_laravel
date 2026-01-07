@@ -471,7 +471,7 @@
 }
 
 .status-belum-bayar {
-  background-color: #f59e0b; /* amber */
+  background-color: #f59e0b;
   cursor: pointer;
 }
 
@@ -480,19 +480,19 @@
 }
 
 .status-dikemas {
-  background-color: #3b82f6; /* blue */
+  background-color: #3b82f6; 
 }
 
 .status-dikirim {
-  background-color: #8b5cf6; /* purple */
+  background-color: #8b5cf6; 
 }
 
 .status-selesai {
-  background-color: #22c55e; /* green */
+  background-color: #22c55e; 
 }
 
 .status-batal {
-  background-color: #ef4444; /* red */
+  background-color: #ef4444; 
 }
 
 .modal-box {
