@@ -27,7 +27,7 @@ class CheckoutController extends Controller
                 $order = Order::create([
                     'user_id' => $user->id,
                     'total_harga' => 0,
-                    'status' => 'Belum Bayar',
+                    'status' => 'Menunggu Pembayaran',
                 ]);
 
                 $totalHarga = 0;
@@ -91,7 +91,7 @@ class CheckoutController extends Controller
             ->where('user_id', $user->id)
             ->firstOrFail();
 
-        if ($order->status !== 'Belum Bayar') {
+        if ($order->status !== 'Menunggu Pembayaran') {
             return response()->json([
                 'message' => 'Order tidak dapat dibatalkan'
             ], 400);

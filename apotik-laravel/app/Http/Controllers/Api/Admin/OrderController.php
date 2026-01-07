@@ -25,7 +25,7 @@ class OrderController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:Belum Bayar,Dikemas,Dikirim,Selesai,Batal',
+            'status' => 'required|in:Menunggu Pembayaran,Dikemas,Dikirim,Selesai,Batal',
         ]);
 
         $order = Order::with('items')->findOrFail($id);
@@ -38,7 +38,7 @@ class OrderController extends Controller
 
         try {
             \DB::transaction(function () use ($order, $request) {
-                if ($request->status === 'Dikemas' && $order->status === 'Belum Bayar') {
+                if ($request->status === 'Dikemas' && $order->status === 'Menunggu Pembayaran') {
                     foreach ($order->items as $item) {
                         $produk = \App\Models\Produk::lockForUpdate()->findOrFail($item->produk_id);
 
