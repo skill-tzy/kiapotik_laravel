@@ -12,7 +12,7 @@ export default function OrderList({ orders }) {
 
     try {
       const res = await fetch(
-        `http://localhost:8000/api/orders/${orderId}/cancel`,
+        `https://api.muhammadadzkia.informatika24b1.com/api/orders/${orderId}/cancel`,
         {
           method: "PUT",
           headers: {

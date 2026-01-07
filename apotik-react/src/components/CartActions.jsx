@@ -9,7 +9,7 @@ export default function CartActions() {
     if (cart.length === 0) return alert("Keranjang kosong");
 
     try {
-      const res = await fetch("http://localhost:8000/api/checkout", {
+      const res = await fetch("https://api.muhammadadzkia.informatika24b1.com/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

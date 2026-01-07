@@ -28,7 +28,7 @@ export default function EditProduk({ editData, token, onSave, onClose }) {
       formData.append("stok", stok);
       if (gambar) formData.append("gambar", gambar);
 
-      const res = await fetch(`http://localhost:8000/api/inventori/${editData.id}`, {
+      const res = await fetch(`https://api.muhammadadzkia.informatika24b1.com/api/inventori/${editData.id}`, {
         method: "POST", 
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

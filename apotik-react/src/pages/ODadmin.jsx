@@ -20,7 +20,7 @@ export default function ODadmin() {
 
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/admin/orders", {
+        const res = await fetch("https://api.muhammadadzkia.informatika24b1.com/api/admin/orders", {
           headers: {
             Authorization: `Bearer ${token}`,
             Accept: "application/json",

@@ -7,7 +7,7 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
     setUpdating((prev) => ({ ...prev, [orderId]: true }));
 
     try {
-      const res = await fetch(`http://localhost:8000/api/admin/orders/${orderId}/status`, {
+      const res = await fetch(`https://api.muhammadadzkia.informatika24b1.com/api/admin/orders/${orderId}/status`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,14 +33,15 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
 
   return (
     <>
-      {orders.map((order) => (
+    {orders
+      .slice()
+      .sort((a, b) => b.id - a.id)
+      .map((order) => (
         <div key={order.id} className="order-box">
           <h3>Order #{order.id}</h3>
-            <p>
-              Pemesan: <strong>{order.user?.name || "Unknown User"}</strong>
-            </p>
+          <p>Pemesan: <strong>{order.user?.name || "Unknown User"}</strong></p>
           <p>Total Harga: Rp {Number(order.total_harga).toLocaleString("id-ID")}</p>
-
+      
           {order.items && order.items.length > 0 && (
             <table className="cart-table">
               <thead>
@@ -63,10 +64,9 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
               </tbody>
             </table>
           )}
-
+    
           <div className="admin-status-wrapper">
             <label>Status:</label>
-
             <select
               className={`admin-status-select status-${order.status.replace(" ", "-")}`}
               value={order.status}
@@ -79,13 +79,10 @@ export default function AdminOrderList({ orders, token, onUpdate }) {
               <option value="Selesai">Selesai</option>
               <option value="Batal">Batal</option>
             </select>
-
-            {updating[order.id] && (
-              <span className="status-updating">Updating...</span>
-            )}
+            {updating[order.id] && <span className="status-updating">Updating...</span>}
           </div>
         </div>
-      ))}
+    ))}
     </>
   );
 }

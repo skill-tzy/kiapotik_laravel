@@ -26,7 +26,7 @@ export default function KTadmin() {
   useEffect(() => {
     if (!token) return;
 
-    fetch("http://localhost:8000/api/inventori", {
+    fetch("https://api.muhammadadzkia.informatika24b1.com/api/inventori", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export default function KTadmin() {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/inventori/${id}`, {
+      const res = await fetch(`https://api.muhammadadzkia.informatika24b1.com/api/inventori/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -117,7 +117,7 @@ export default function KTadmin() {
                     <td>
                       {p.gambar ? (
                         <img
-                          src={`http://localhost:8000/${p.gambar}`}
+                          src={`https://api.muhammadadzkia.informatika24b1.com/${p.gambar}`}
                           alt={p.nama}
                           className="produk-img"
                         />

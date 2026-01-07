@@ -7,7 +7,7 @@ export default function Katalog() {
   const [produk, setProduk] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/katalog")
+    fetch("https://api.muhammadadzkia.informatika24b1.com/api/katalog")
       .then((res) => res.json())
       .then((data) => setProduk(data))
       .catch((err) => console.error(err));
@@ -45,7 +45,7 @@ export default function Katalog() {
             {produk.map((row) => (
               <div className="struktur-organisasi-box" key={row.id}>
                 <img
-                  src={`http://localhost:8000/${row.gambar}`}
+                  src={`https://api.muhammadadzkia.informatika24b1.com/${row.gambar}`}
                   alt={row.nama}
                   className="struktur-organisasi-photo"
                 />

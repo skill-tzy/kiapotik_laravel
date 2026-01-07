@@ -13,7 +13,7 @@ export default function KTuser() {
   const { addToCart, cart } = useCart();
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/katalog")
+    fetch("https://api.muhammadadzkia.informatika24b1.com/api/katalog")
       .then((res) => res.json())
       .then((data) => setProduk(data))
       .catch(console.error);

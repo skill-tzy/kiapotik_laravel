@@ -12,7 +12,7 @@ export default function ODuser() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/orders", {
+        const res = await fetch("https://api.muhammadadzkia.informatika24b1.com/api/orders", {
           headers: {
             Authorization: `Bearer ${token}`,
             Accept: "application/json",

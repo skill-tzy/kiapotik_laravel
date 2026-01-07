@@ -9,7 +9,7 @@ export default function KatalogList({ produk, onAdd }) {
           style={{ cursor: "pointer" }}
         >
           <img
-            src={`http://localhost:8000/${row.gambar}`}
+            src={`https://api.muhammadadzkia.informatika24b1.com//${row.gambar}`}
             alt={row.nama}
             className="struktur-organisasi-photo"
           />

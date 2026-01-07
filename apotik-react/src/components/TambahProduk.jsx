@@ -19,7 +19,7 @@ export default function TambahProduk({ token, onSave, onClose }) {
     if (gambar) formData.append("gambar", gambar);
 
     try {
-      const res = await fetch("http://localhost:8000/api/inventori", {
+      const res = await fetch("https://api.muhammadadzkia.informatika24b1.com/api/inventori", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -29,7 +29,7 @@ export default function TambahProduk({ token, onSave, onClose }) {
 
       const data = await res.json();
       if (res.ok) {
-        onSave(data.data); // kirim data baru ke KTadmin
+        onSave(data.data);
       } else {
         alert(data.message || "Gagal menambahkan produk");
       }
