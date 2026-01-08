@@ -5,7 +5,7 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\InventoriController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('api-info');
 });
 Route::get('/tentang', function () {
     return view('tentang');
