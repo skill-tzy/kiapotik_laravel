@@ -35,65 +35,85 @@ export default function OrderList({ orders }) {
     }
   };
 
-  if (!orders || orders.length === 0) return <p>Belum ada order</p>;
+  if (!orders || orders.length === 0) {
+    return <p>Belum ada order</p>;
+  }
+
+  // 🔥 1. Urutkan order terbaru di atas
+  const sortedOrders = [...orders].sort((a, b) => {
+    // kalau ada created_at (PALING AMAN)
+    if (a.created_at && b.created_at) {
+      return new Date(b.created_at) - new Date(a.created_at);
+    }
+
+    // fallback kalau tidak ada created_at
+    return b.id - a.id;
+  });
+
+  const totalOrders = sortedOrders.length;
 
   return (
     <>
-      {orders.map((order) => (
-        <div key={order.id} className="order-box">
-          <h3>Order #{order.id}</h3>
+      {sortedOrders.map((order, index) => {
+        // 🔢 2. Nomor order berdasarkan urutan user
+        const orderNumber = totalOrders - index;
 
-          <OrderItemStatus
-            status={order.status}
-            vaNumber={order.va_number}
-          />
+        return (
+          <div key={order.id} className="order-box">
+            <h3>Order #{orderNumber}</h3>
 
-          {order.status === "Menunggu Pembayaran" && (
-            <button
-              className="btn-cancel"
-              onClick={() => handleCancel(order.id)}
-            >
-              Batalkan Order
-            </button>
-          )}
+            <OrderItemStatus
+              status={order.status}
+              vaNumber={order.va_number}
+            />
 
-          <p>
-            Total Harga: Rp{" "}
-            {Number(order.total_harga).toLocaleString("id-ID")}
-          </p>
+            {order.status === "Menunggu Pembayaran" && (
+              <button
+                className="btn-cancel"
+                onClick={() => handleCancel(order.id)}
+              >
+                Batalkan Order
+              </button>
+            )}
 
-          {order.items && order.items.length > 0 ? (
-            <table className="cart-table">
-              <thead>
-                <tr>
-                  <th>Produk</th>
-                  <th>Harga</th>
-                  <th>Qty</th>
-                  <th>Subtotal</th>
-                </tr>
-              </thead>
-              <tbody>
-                {order.items.map((item) => (
-                  <tr key={item.id}>
-                    <td>{item.produk?.nama}</td>
-                    <td>
-                      Rp{" "}
-                      {Number(item.harga).toLocaleString("id-ID")}
-                    </td>
-                    <td>{item.qty}</td>
-                    <td>
-                      Rp{" "}
-                      {Number(item.subtotal).toLocaleString("id-ID")}
-                    </td>
+            <p>
+              Total Harga: Rp{" "}
+              {Number(order.total_harga).toLocaleString("id-ID")}
+            </p>
+
+            {order.items && order.items.length > 0 ? (
+              <table className="cart-table">
+                <thead>
+                  <tr>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p>Tidak ada item</p>
-          )}
-        </div>
-      ))}
+                </thead>
+                <tbody>
+                  {order.items.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item.produk?.nama}</td>
+                      <td>
+                        Rp{" "}
+                        {Number(item.harga).toLocaleString("id-ID")}
+                      </td>
+                      <td>{item.qty}</td>
+                      <td>
+                        Rp{" "}
+                        {Number(item.subtotal).toLocaleString("id-ID")}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>Tidak ada item</p>
+            )}
+          </div>
+        );
+      })}
     </>
   );
 }

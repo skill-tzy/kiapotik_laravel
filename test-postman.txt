@@ -1,11 +1,12 @@
 a. Check Endpoint
 Method: GET
-URL: http://127.0.0.1:8000/api/health
+URL: https://api.muhammadadzkia.informatika24b1.com/api/health
+
 Kegunaan: mengetes apakah server atau API kamu sedang hidup (aktif) dan bisa merespons dengan benar.
 
 b. Buat Akun Baru
 Method: POST
-URL: http://127.0.0.1:8000/api/auth/register
+URL: https://api.muhammadadzkia.informatika24b1.com/api/auth/register
 
 Headers: 
 Accept: application/json
@@ -21,54 +22,54 @@ Body -> raw
 
 c. Login - Ambil Token
 Method: POST
-URL: http://127.0.0.1:8000/api/auth/login
+URL: https://api.muhammadadzkia.informatika24b1.com/api/auth/login
 
 Body -> raw
-{"email":"demo@example.test","password":"password"}
+{"email":"adzkia@gmail.com","password":"password"}
 
 *Ambil Token
 
 d. Me (cek siapa yang login)
 Method: GET
-URL: http://127.0.0.1:8000/api/auth/me
-
-Headers: 
-Authorization: Bearer <token
-
-e. Lihat Semua Produk
-Method: GET
-URL: http://127.0.0.1:8000/api/inventori
+URL: https://api.muhammadadzkia.informatika24b1.com/api/auth/me
 
 Headers: 
 Authorization: Bearer <token>
 
 e. Lihat Semua Produk
 Method: GET
-URL: http://127.0.0.1:8000/api/inventori
+URL: https://api.muhammadadzkia.informatika24b1.com/api/inventori
 
 Headers: 
 Authorization: Bearer <token>
 
 f. Tambah Produk
 Method: POST
-URL: http://127.0.0.1:8000/api/inventori
+URL: https://api.muhammadadzkia.informatika24b1.com/api/inventori
+
+Login Sebagai Admin
 
 Headers: 
 Accept: application/json
 Authorization: Bearer <token>
 
 Body -> form-data
+
+
+Body -> form-data
 Key   	|Value (contoh)       |Type
 ===================================
-nama	  |ANTANGIN 500mg    	  |text
+nama	  |PANADOL          	  |text
 harga	  |12000	              |text
 stok	  |50	                  |text
 gambar	|(pilih file jpg/png)	|file
 
 g. Update Produk
 Method: PUT
-URL: http://127.0.0.1:8000/api/inventori/[id]
-contoh : http://127.0.0.1:8000/api/inventori/15
+URL: https://api.muhammadadzkia.informatika24b1.com/api/inventori/[id]
+contoh : https://api.muhammadadzkia.informatika24b1.com/api/inventori/25
+
+Login Sebagai Admin
 
 Headers: 
 Accept: application/json
@@ -77,15 +78,17 @@ Authorization: Bearer <token>
 
 Body -> raw
 {
-  "nama": "ANTANGIN 500MG",
-  "harga": 3000,
-  "stok": 100,
-} 
+  "nama": "PANADOL 500 MG",
+  "harga": 13000,
+  "stok": 100
+}
 
 h. Hapus Produk
 Method: DELETE
-URL: http://127.0.0.1:8000/api/inventori/[id]
-contoh : http://127.0.0.1:8000/api/inventori/15
+URL: https://api.muhammadadzkia.informatika24b1.com/api/inventori/[id]
+contoh : https://api.muhammadadzkia.informatika24b1.com/api/inventori /25
+
+Login Sebagai Admin
 
 Headers: 
 Accept: application/json
@@ -93,7 +96,76 @@ Authorization: Bearer <token>
 
 i. Logout
 Method: POST
-URL: http://127.0.0.1:8000/api/auth/logout
+URL: https://api.muhammadadzkia.informatika24b1.com/api/auth/logout
 
 Headers: 
 Authorization: Bearer <token>
+
+j. Checkout Order
+Method: POST
+URL: https://api.muhammadadzkia.informatika24b1.com/api/checkout
+
+Login Sebagai User
+
+Headers: 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer <token>
+
+Body -> raw
+{
+  "items": [
+    {
+      "produk_id": 1,
+      "qty": 2
+    }
+  ]
+}
+
+k. Lihat Order
+Method: GET
+URL: https://api.muhammadadzkia.informatika24b1.com/api/orders
+
+Login Sebagai User
+
+Headers: 
+Accept: application/json
+Authorization: Bearer <token>
+
+l. Batal Order User
+Method: PUT
+URL: https://api.muhammadadzkia.informatika24b1.com/api/orders/{order_id}/cancel
+Contoh: https://api.muhammadadzkia.informatika24b1.com/api/orders/20/cancel
+
+Login Sebagai User
+
+Headers: 
+Accept: application/json
+Authorization: Bearer <token>
+
+m. Lihat Semua Order
+Method: GET
+URL: https://api.muhammadadzkia.informatika24b1.com/api/admin/orders
+
+Login Sebagai Admin
+
+Headers: 
+Accept: application/json
+Authorization: Bearer <token>
+
+n. Ganti Status Order
+Method: PUT
+URL: https://api.muhammadadzkia.informatika24b1.com/api/admin/orders/{order_id}/status
+Contoh: https://api.muhammadadzkia.informatika24b1.com/api/admin/orders/21/status
+
+Login Sebagai Admin
+
+Headers: 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer <token>
+
+Body -> raw
+{
+  "status": "Dikemas"
+}
